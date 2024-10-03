@@ -1,0 +1,301 @@
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background-color: rgb(219,0,64);
+}
+
+
+.Section{ 
+  display:flex;
+  align-items: center;
+  width: 70%;
+  height: 
+}
+
+.Section:hover{
+ color:rgb(219,0,64);
+  
+}
+#Undo-Button{ 
+  position:absolute;
+  left: 0px;
+  padding: 15px 20px;
+}
+
+
+h1{
+  font-family: "Fredoka", sans-serif;
+  font-weight: 550;
+  line-height: 10px;
+  color: rgb(219,0,64);
+}
+
+h2{
+  font-family: "Fredoka", sans-serif;
+  font-weight: 450;
+  font-size: 22px;
+  line-height: 10px;
+  
+}
+
+h3{
+  font-family: "Fredoka", sans-serif;
+  font-weight: 550;
+  line-height: 0px;
+  font-size: 28px;
+  text-align: center;
+  color: rgb(219,0,64);
+  
+}
+
+h4{
+  font-family: "Fredoka", sans-serif;
+  font-weight: 550;
+  line-height: 0px;
+  font-size: 14px;
+  text-align: center;
+  color: black;
+}
+
+h5{
+  font-family: "Fredoka", sans-serif;
+  font-weight: 550;
+  line-height: 0px;
+  font-size: 18px;
+  text-align: center;
+  color: rgb(219,0,64);
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+p {
+  text-indent: 10px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 450;
+}
+
+
+
+.categories{
+  display:grid;
+  grid-template-columns: 40% 40%;
+  grid-row-gap: 0px;
+}
+
+.text{
+  padding: 60px 10px 0px 40px;
+}
+
+#About-Me-Image{
+  border-radius: 10px;
+  border-line:0px;
+  position: absolute;
+  left: 30px;
+  margin-top: 20px;
+}
+
+#About-Me-Text{
+  margin-left:200px;
+  margin-top: 50px;
+  text-align: left;
+  text-indent: 0px;
+  font-size: 13px;
+  margin-right: 30px;
+}
+
+#Inspiration-Image{
+  font-size: 0px;
+  padding:0px;
+  vertical-align: text-top;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 450px;
+  height: 280px;
+ -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,.4));
+  border-radius: 25px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;    
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/*.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+*/
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: white;
+  border-radius: 25px;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: white;
+  color: black;
+  text-align: center;
+  transform: rotateY(180deg);
+  border-radius: 25px;
+}
+
+.Portfolio-Image{
+  margin:2px;
+  border:.5px solid rgb(200,200,200);
+}
+
+.Portfolio-Image:hover{
+  transform:scale(3);
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: white;
+  
+}
+
+.material-icons{
+  cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+<div class="flip-card">
+<div class="flip-card-inner">
+  <div class="flip-card-front">
+  <div class="text">
+    <h1>HORTENSE QUAZZA</h1>
+    <h2>Senior Data Visualisation Specialist</h2>
+      <div class="categories">
+          <div class="Section"   onclick="rotateAboutMe()">
+            <i class="material-icons">face</i>
+            <p>About Me</p> 
+          </div>
+          <div class="Section" onclick="rotatePortfolio()">
+            <i class="material-icons" >work</i>
+            <p>Portfolio</p>
+          </div>
+          <div class="Section" onclick="rotateSkills()">
+            <i class="material-icons" >star</i>
+            <p>Skills</p>
+          </div>
+          <div class="Section" onclick="rotateInspiration()">
+            <i class="material-icons" >lightbulb</i>
+            <p>Inspiration</p>
+          </div>
+      </div>
+  </div>
+  </div>
+ <div class="flip-card-back">
+   <i id="Undo-Button" class="material-icons" onclick="returnButton()">undo</i>
+    <div id="back-filler"></div>
+  </div>
+
+                            </div>
+</div>
+
+<script>
+function rotateAboutMe(){
+ console.log("rotateAboutMe");
+ document.getElementsByClassName("flip-card-inner")[0].style.transform="rotateY(180deg)";
+   document.getElementsByClassName("flip-card-back")[0].style.transform="rotateY(180deg)";
+  const backDiv = document.getElementById("back-filler");
+    backDiv.innerHTML=`<h3> About Me </h3>
+    <img id="About-Me-Image" src="https://github.com/hquazza/digital_business_card/blob/main/Profile%20Pic%20Cropped.jpg?raw=true" width=150px></img>
+    <p id="About-Me-Text">Hi I'm Hortense - week 2 in CQC! I've stumbled into Data Visualisation as a career...originally trained up as a Service Designer, then  thrown into the deep end of Data Management and Analytics... and then realised the combination of technology meets creativity was perfect for me! </p>
+    `;
+    };
+
+function rotatePortfolio(){
+ console.log("rotatePortfolio");
+ document.getElementsByClassName("flip-card-inner")[0].style.transform="rotateX(180deg)";
+    document.getElementsByClassName("flip-card-back")[0].style.transform="rotateX(180deg)";
+    const backDiv = document.getElementById("back-filler");
+    backDiv.innerHTML=`<h3> Portfolio </h3>
+    <img class="Portfolio-Image" src="https://github.com/hquazza/digital_business_card/blob/main/Portfolio_la_Lettura_Example.png?raw=true" height=100px> </img>
+    <img class="Portfolio-Image" src="https://github.com/hquazza/digital_business_card/blob/main/Portfolio_KPI_Example.png?raw=true" height=100px> </img>
+    <img class="Portfolio-Image" src="https://github.com/hquazza/digital_business_card/blob/main/Portfolio_MI_Example.png?raw=true" height=100px> </img>
+    `;
+    };
+
+function rotateSkills(){
+ console.log("rotateSkills");
+ document.getElementsByClassName("flip-card-inner")[0].style.transform="rotateY(-180deg)";
+     document.getElementsByClassName("flip-card-back")[0].style.transform="rotateY(-180deg)";
+    const backDiv = document.getElementById("back-filler");
+    backDiv.innerHTML=`<h3> Skills </h3>
+    <img id="Skills-Image" src="https://github.com/hquazza/digital_business_card/blob/main/Coxcomb_Skills.png?raw=true" height=220px></img>
+    `;
+    };
+
+function rotateInspiration(){
+ console.log("rotateInspiration");
+ document.getElementsByClassName("flip-card-inner")[0].style.transform="rotateX(-180deg)";
+  document.getElementsByClassName("flip-card-back")[0].style.transform="rotateX(-180deg)";
+    const backDiv = document.getElementById("back-filler");
+    backDiv.innerHTML=`<h3> Inspiration </h3>
+   <div id="InspirationPage">
+   <img id="InspirationImage" src="https://images.squarespace-cdn.com/content/v1/550de105e4b05c49fa2bba03/f5c5eec3-ce88-41d1-8a58-e45ddd462881/Screenshot+2023-12-10+at+10.46.38%E2%80%AFAM.png?format=2500w" height=150px> </img>
+    <h4 id="InspirationSubtitle"> My Ultimate Inspiration </h4>
+   <h5 id="InspirationName">   <a href="https://giorgialupi.com/" target="_blank"> Giorgia Lupi </a> </h5>
+   </div>
+   <i class="material-icons" onclick="chevronClick()">chevron_right</i>
+   `;
+    };
+
+function returnButton(){
+  console.log("returnButton")
+  document.getElementsByClassName("flip-card-inner")[0].style.transform="rotateY(0deg)";
+    };
+   
+
+function chevronClick(){
+  const images = ["https://images.squarespace-cdn.com/content/v1/550de105e4b05c49fa2bba03/f5c5eec3-ce88-41d1-8a58-e45ddd462881/Screenshot+2023-12-10+at+10.46.38%E2%80%AFAM.png?format=2500w","https://i.pinimg.com/originals/38/ab/9b/38ab9b8cbbfc06ff1bd25e730b5f2fb5.png","https://blenderartists.org/uploads/default/optimized/4X/9/1/3/91343c0b0183ab95f4d24f1ce174cbad0b0f096d_2_1024x682.png","https://th.bing.com/th/id/OIP.TtDGONXJ_DwZFUj7mIQTNwAAAA?rs=1&pid=ImgDetMain","https://i.pinimg.com/originals/40/3c/a0/403ca04b37ca9f162e1bc75e5f7d25be.jpg","https://pi.tedcdn.com/r/pe.tedcdn.com/images/ted/46f08b057c280fb6e471b1003bb9a78078c394ed_2880x1620.jpg?w=1200"];
+  const subtitles =["My Ultimate Inspiration","Editorial Data Viz","Interactive Visuals", "Infographic Data Viz","Data Viz Storyteller", "All Rounder Storyteller"];
+  const name=['<a href="https://giorgialupi.com/" target="_blank"> Giorgia Lupi </a>','<a href="https://www.flickr.com/photos/accurat/albums/72157632185046466/with/8250027298" target="_blank"> La Lettura </a>','<a href="https://www.visualcinnamon.com/#:~:text=Visual%20Cinnamon%20|%20Data%20Visualization%20Design" target="_blank"> Visual Cinnamon </a>', '<a href="https://informationisbeautiful.net/" target="_blank"> Information is Beautiful </a>', '<a href="https://www.openculture.com/2011/11/hans_rosling_uses_ikea_props.html" target="_blank"> Hans Rosling </a>', '<a href="https://www.ted.com/talks/malcolm_gladwell_choice_happiness_and_spaghetti_sauce?subtitle=en" target="_blank"> Malcolm Gladwell </a>'];
+  
+  const imageElement=document.getElementById("InspirationImage");
+  console.log(imageElement.src);
+  var i = images.indexOf(imageElement.src);
+  if(i<images.length-1){
+    i+=1;
+   } else{
+     i=0;
+   }
+  
+  const SubtitleElement=document.getElementById("InspirationSubtitle");
+  const NameElement=document.getElementById("InspirationName");
+  
+imageElement.src=images[i];
+SubtitleElement.innerHTML=subtitles[i];
+NameElement.innerHTML=name[i];
+};
+</script>
+</body>
